@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
-        android:layout_width="75dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:id="@+id/contribAvatar" />
+        android:id="@+id/contribAvatar"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Contributor"
         android:id="@+id/contribName"
-        android:gravity="center_horizontal"
+        android:gravity="center"
+        android:textAlignment="center"
         android:layout_below="@id/contribAvatar"
         android:textColor="@android:color/black"/>
 
