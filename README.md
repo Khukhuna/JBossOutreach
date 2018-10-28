@@ -1,4 +1,4 @@
 # JBossOutreach
 Part of Google Code-In 2018 :D
 
-<img src="https://im3.ezgif.com/tmp/ezgif-3-28787faa5d10.gif">
+<img src="https://user-images.githubusercontent.com/37747169/47618491-26ed7280-daed-11e8-94fc-bc467019436d.gif">
