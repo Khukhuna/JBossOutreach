@@ -14,7 +14,6 @@ import com.khukhuna.jbossoutreach.R;
 import com.khukhuna.jbossoutreach.adapters.ContributorsAdapter;
 import com.khukhuna.jbossoutreach.helpers.Constants;
 import com.khukhuna.jbossoutreach.models.Contributor;
-import com.khukhuna.jbossoutreach.models.Repository;
 import com.khukhuna.jbossoutreach.network.GitHubClient;
 import com.khukhuna.jbossoutreach.network.GitHubService;
 
@@ -36,7 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
         mRecyclerView = findViewById(R.id.contribRecycler);
 
-        ImageView logo = findViewById(R.id.details_logo);
+        ImageView logo = findViewById(R.id.repo_logo);
 
         Intent intent = getIntent();
         name = intent.getStringExtra(Constants.NAME);

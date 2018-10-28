@@ -1,7 +1,9 @@
 package com.khukhuna.jbossoutreach.adapters;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +43,10 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.My
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), DetailsActivity.class);
                     intent.putExtra(Constants.NAME, repository.getName());
-                    view.getContext().startActivity(intent);
+                    View logo = view.findViewById(R.id.repo_logo);
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity) view.getContext(), logo, "logo");
+                    view.getContext().startActivity(intent, options.toBundle());
                 }
             });
             title = v.findViewById(R.id.title);
