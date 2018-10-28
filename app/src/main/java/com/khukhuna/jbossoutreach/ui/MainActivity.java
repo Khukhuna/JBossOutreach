@@ -57,12 +57,11 @@ public class MainActivity extends AppCompatActivity {
                         adapter.addData(data);
                     }
                 }
-                Toast.makeText(MainActivity.this, response.message(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Repository>> call, @NonNull Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

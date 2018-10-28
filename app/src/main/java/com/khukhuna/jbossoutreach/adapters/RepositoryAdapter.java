@@ -1,5 +1,6 @@
 package com.khukhuna.jbossoutreach.adapters;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.khukhuna.jbossoutreach.R;
+import com.khukhuna.jbossoutreach.helpers.Constants;
 import com.khukhuna.jbossoutreach.models.Repository;
+import com.khukhuna.jbossoutreach.ui.DetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +31,19 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.My
         TextView description;
         ImageView logo;
 
+        Repository repository;
+
         public MyViewHolder(View v) {
             super(v);
             view = v;
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+                    intent.putExtra(Constants.NAME, repository.getName());
+                    view.getContext().startActivity(intent);
+                }
+            });
             title = v.findViewById(R.id.title);
             stars = v.findViewById(R.id.stars);
             issues = v.findViewById(R.id.issues);
@@ -40,6 +53,8 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.My
         }
 
         public void bind(Repository repository) {
+            this.repository = repository;
+
             title.setText(repository.getName());
             stars.setText(String.valueOf(repository.getStars()));
             issues.setText(String.valueOf(repository.getIssues()));
@@ -56,7 +71,7 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.My
 
     @Override
     public RepositoryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
-                                                             int viewType) {
+                                                              int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.repository_cell, parent, false);
         return new MyViewHolder(v);

@@ -1,0 +1,31 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/details_logo"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_logo"
+        android:text="Contributors"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:id="@+id/contribhint"
+        android:textColor="@android:color/black"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contribhint"
+        android:layout_marginTop="10dp"
+        android:id="@+id/contribRecycler"/>
+
+</RelativeLayout>
