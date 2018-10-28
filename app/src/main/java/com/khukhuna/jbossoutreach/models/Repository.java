@@ -29,6 +29,9 @@ public class Repository {
     @Expose
     private int watchers;
 
+    @SerializedName("description")
+    private String description;
+
 
     public String getName() {
         return name;
@@ -52,6 +55,14 @@ public class Repository {
 
     public void setStars(int stars) {
         this.stars = stars;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getIssues() {

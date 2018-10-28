@@ -25,6 +25,7 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.My
         TextView stars;
         TextView issues;
         TextView forks;
+        TextView description;
         ImageView logo;
 
         public MyViewHolder(View v) {
@@ -35,13 +36,15 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.My
             issues = v.findViewById(R.id.issues);
             forks = v.findViewById(R.id.forks);
             logo = v.findViewById(R.id.repo_logo);
+            description = v.findViewById(R.id.description);
         }
 
         public void bind(Repository repository) {
-            title.setText(String.valueOf(repository.getName()));
+            title.setText(repository.getName());
             stars.setText(String.valueOf(repository.getStars()));
             issues.setText(String.valueOf(repository.getIssues()));
             forks.setText(String.valueOf(repository.getForks()));
+            description.setText(repository.getDescription());
             Glide.with(view.getContext()).load("http://maciek.lasyk.info/sysop/wp-content/uploads/2013/12/redhat.png").into(logo);
         }
     }
@@ -61,7 +64,7 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.My
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.bind(mDataset.get(position));
