@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.khukhuna.jbossoutreach.R;
 import com.khukhuna.jbossoutreach.adapters.ContributorsAdapter;
 import com.khukhuna.jbossoutreach.helpers.Constants;
@@ -28,6 +29,9 @@ public class DetailsActivity extends AppCompatActivity {
     String name;
     private RecyclerView mRecyclerView;
     private ContributorsAdapter mAdapter;
+    private ImageView firstPlace;
+    private ImageView secondPlace;
+    private ImageView thirdPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,9 @@ public class DetailsActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.contribRecycler);
 
         ImageView logo = findViewById(R.id.repo_logo);
+        firstPlace = findViewById(R.id.first_place);
+        secondPlace = findViewById(R.id.second_place);
+        thirdPlace = findViewById(R.id.third_place);
 
         Intent intent = getIntent();
         name = intent.getStringExtra(Constants.NAME);
@@ -59,6 +66,11 @@ public class DetailsActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     List<Contributor> data = response.body();
                     if(data != null){
+
+                        Glide.with(DetailsActivity.this).load(data.get(0).getImageurl()).apply(RequestOptions.circleCropTransform()).into(firstPlace);
+                        Glide.with(DetailsActivity.this).load(data.get(1).getImageurl()).apply(RequestOptions.circleCropTransform()).into(secondPlace);
+                        Glide.with(DetailsActivity.this).load(data.get(2).getImageurl()).apply(RequestOptions.circleCropTransform()).into(thirdPlace);
+
                         mAdapter.addItems(data);
                     }
                 }
